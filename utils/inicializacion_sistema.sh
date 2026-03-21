@@ -9,7 +9,7 @@ SERVICE_DIR="/etc/systemd/system"
 SCRIPT_DIR="/opt/CE_for_embededd/utils"
 #install nvm
 type curl >> corrio
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | /usr/bin/bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash 2>> corrio
 
 # Create systemd service for launch_wizard
 sudo tee $SERVICE_DIR/launch-wizard.service > /dev/null <<EOF
