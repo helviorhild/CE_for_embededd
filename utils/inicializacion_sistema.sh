@@ -7,9 +7,11 @@ set -e
 
 SERVICE_DIR="/etc/systemd/system"
 SCRIPT_DIR="/opt/CE_for_embededd/utils"
+curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+apt-get install -y nodejs
 #install nvm
-type curl >> corrio
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash 2>> corrio
+#type curl >> corrio
+#curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash 2>> corrio
 # Create systemd service for launch_wizard
 sudo tee $SERVICE_DIR/launch-wizard.service > /dev/null <<EOF
 [Unit]
