@@ -1,4 +1,5 @@
 #!/bin/bash
 cd /opt/CE_for_embededd/wizard
-cd "$(dirname "$0")"
+npm install
+npm run build
 npm run start

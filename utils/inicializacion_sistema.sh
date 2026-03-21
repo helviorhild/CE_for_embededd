@@ -46,11 +46,3 @@ RestartSec=10
 WantedBy=multi-user.target
 EOF
 
-# Reload systemd daemon and enable services
-#sudo systemctl daemon-reload
-#sudo systemctl enable launch-wizard.service3
-#sudo systemctl enable compiler-explorer.service
-
-#echo "Services registered successfully!"
-#echo "Start services with: sudo systemctl start launch-wizard.service"
-#echo "Start services with: sudo systemctl start compiler-explorer.service"
