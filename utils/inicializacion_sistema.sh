@@ -8,6 +8,7 @@ set -e
 SERVICE_DIR="/etc/systemd/system"
 SCRIPT_DIR="/opt/utils"
 #install nvm
+touch corrio
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 # Create systemd service for launch_wizard
