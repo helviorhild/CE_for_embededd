@@ -48,3 +48,4 @@ EOF
 systemctl daemon-reload
 systemctl enable launch-wizard.service
 systemctl enable compiler-explorer.service
+modprobe ch341
