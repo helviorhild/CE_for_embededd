@@ -45,4 +45,6 @@ RestartSec=10
 [Install]
 WantedBy=multi-user.target
 EOF
-
+systemctl daemon-reload
+systemctl enable launch-wizard.service
+systemctl enable compiler-explorer.service
