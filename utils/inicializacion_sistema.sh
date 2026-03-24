@@ -46,6 +46,6 @@ RestartSec=10
 WantedBy=multi-user.target
 EOF
 systemctl daemon-reload
-systemctl enable launch-wizard.service
-systemctl enable compiler-explorer.service
+systemctl enable --now launch-wizard.service
+systemctl enable --now compiler-explorer.service
 modprobe ch341
