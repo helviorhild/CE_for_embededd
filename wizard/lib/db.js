@@ -44,6 +44,11 @@ CREATE TABLE IF NOT EXISTS lenguaje (
       FOREIGN KEY (placa_id) REFERENCES placa(id)
     );
 
+    create table if not exists categoria (
+      id integer primary key autoincrement,
+      name text UNIQUE,
+      descripcion text
+    );
      CREATE TABLE IF NOT EXISTS ejemplo (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT,
@@ -51,9 +56,17 @@ CREATE TABLE IF NOT EXISTS lenguaje (
       ce_config TEXT,
       leyenda TEXT,
       lenguaje_id INTEGER,
+      categoria_id INTEGER,
+      FOREIGN KEY (categoria_id) REFERENCES categoria(id),
       FOREIGN KEY (lenguaje_id) REFERENCES lenguaje(id)
-    )
-  `);
+    );
+    Insert into categoria (name, descripcion) values 
+    ('TODOS', 'lista de todos los ejemplos'),
+    ('Caracteristicas', 'Ejemplos que muestran las características de cada arquitectura'),
+    ('rendimiento', 'Ejemplos que muestran el rendimiento de cada arquitectura'),
+    ('funciones especificas', 'Ejemplos que muestran funciones específicas de cada arquitectura')
+    ON CONFLICT(name) DO NOTHING;
+    `);
 
   return db;
 }

@@ -22,7 +22,7 @@ const [ejemplo, setEjemplo] = useState([{ id: 0, name: "Cargando datos...", imag
   if (!ejemplo) {
     return (
       <div className="text-center text-red-500">       
-      <FormIngreso eId={id} route="ejemplo" titulo="ejemplo" onSuccess={loadEjemplo}/>
+      <FormIngreso eId={id} route="ejemplo" titulo="ejemplo" categoria="nueva" onSuccess={loadEjemplo}/>
         <p>No se encontró ejemplo prototipo para esta arquitectura</p>
         <Link href="/archs" className="text-blue-600 underline">
           ← Volver a la lista
@@ -33,7 +33,7 @@ const [ejemplo, setEjemplo] = useState([{ id: 0, name: "Cargando datos...", imag
 
   return (
     <div className="p-8 text-center">        
-      <FormIngreso eId={id} route="ejemplo" titulo="ejemplo" onSuccess={loadEjemplo}/>
+      <FormIngreso eId={id} route="ejemplo" titulo="ejemplo" categoria="nueva"  onSuccess={loadEjemplo}/>
       <ul>
         {Array.isArray(ejemplo) ?
         (ejemplo.map((u) => (

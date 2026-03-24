@@ -1,8 +1,26 @@
 "use client";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 
-export default function FormIngreso({ eId,route,titulo,onSuccess }) {
-  const [form, setForm] = useState({ name: "", imagen: "" ,eId:eId});
+export default function FormIngreso({ eId,route,titulo,categoria,onSuccess }) {
+  const [selectedId, setSelectedId] = useState("");
+  const [form, setForm] = useState({
+  name: "",
+  imagen: "",
+  ...(eId !== undefined && { eId }),
+  ...(categoria !== undefined && { categoria_id: categoria })
+});
+const [categorias, setCategorias] = useState([]);
+ // const [form, setForm] = useState({ name: "", imagen: "" ,eId:eId,( categoria!== undefined && { categoria_id: categoria })});
+async function loadCategoria() {
+    const res = await fetch(`/api/ejemplo/`);
+    const data = await res.json();
+    setCategorias(data.categorias);
+    console.log("data:",data);
+  }
+
+    useEffect(() => {
+      loadCategoria();
+    }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,9 +42,28 @@ export default function FormIngreso({ eId,route,titulo,onSuccess }) {
   };
 
   return (
-    <div>
- <h1 className="text-2xl font-bold mb-4">Agregar {titulo}</h1>
-    <form onSubmit={handleSubmit} className="my-4 space-x-2 text-center">
+    <div className="p-6 m-4 border border-gray-200 rounded-lg shadow-sm bg-white max-w-2xl mx-auto">
+      <h1 className="text-2xl font-bold mb-4">Agregar {titulo}</h1>
+      <p className="text-left text-gray-500 mb-4  -rotate-45 text-3xl  whitespace-pre">            MODO Desarrollador</p>
+      <form onSubmit={handleSubmit} className="my-4 space-x-2 text-center">
+       {categoria !== undefined && (
+      <div className="form-group text-center text-amber-800">
+    <label htmlFor="categoria-select">Tipo ejemplo:  </label>
+    <select className="text-2xl font-bold mb-4 text-blue-600"
+      id="categoria-select"
+      value={selectedId} 
+      onChange={(e) => setSelectedId(e.target.value)}
+    >
+     {categorias.map((cat) => (
+        <option  key={cat.id} value={cat.id}>
+          {cat.name}
+        </option>
+      ))}
+    </select>
+    
+    {selectedId && <p> {categorias[selectedId-1]?.descripcion}</p>}
+  </div>) }
+     
       <input
         placeholder={titulo}
         value={form.name}

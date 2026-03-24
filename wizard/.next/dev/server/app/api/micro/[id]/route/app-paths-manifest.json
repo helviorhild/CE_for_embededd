@@ -1,0 +1,3 @@
+{
+  "/api/micro/[id]/route": "app/api/micro/[id]/route.js"
+}
