@@ -152,7 +152,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$
 ;
 async function GET(request, { params }) {
     const { id } = await params;
-    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["openDB"])();
+    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["readDB"])();
     //await db.exec('CREATE TABLE IF NOT EXISTS arquitectura(id INTEGER PRIMARY KEY, name TEXT,imagen TEXT)');
     const lenguajes = await db.all('SELECT * FROM lenguaje WHERE placa_id=?', id);
     return Response.json({
@@ -161,7 +161,7 @@ async function GET(request, { params }) {
 }
 async function POST(request) {
     const { name, imagen, placa_id } = await request.json();
-    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["openDB"])();
+    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["readDB"])();
     console.log("name,imagen,arch_id", name, imagen, placa_id);
     await db.run('INSERT INTO lenguaje (name,imagen,placa_id) VALUES (?,?,?)', [
         name,

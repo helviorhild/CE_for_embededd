@@ -1,9 +1,9 @@
-import { openDB } from '@/lib/db';
+import { readDB } from '@/lib/db';
 
 export async function GET(request,{params}) {
   //const { params } = await context;
   const { id } = await params; 
-  const db = await openDB();
+  const db = await readDB();
   //await db.exec('CREATE TABLE IF NOT EXISTS arquitectura(id INTEGER PRIMARY KEY, name TEXT,imagen TEXT)');
   console.log(id);
   const micros= await db.all('SELECT * FROM micro WHERE arch_id=?',id);
@@ -13,7 +13,7 @@ export async function GET(request,{params}) {
 
 export async function POST(request) {
   const { name,imagen,eId } = await request.json();
-  const db = await openDB();
+  const db = await readDB();
   console.log("name,imagen,eId",name,imagen,eId);
   await db.run('INSERT INTO micro (name,imagen,arch_id) VALUES (?,?,?)', [name,imagen,eId]);
   return Response.json({ message: 'micro agregado' });

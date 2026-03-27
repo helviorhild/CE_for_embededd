@@ -153,7 +153,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$
 async function GET(request, { params }) {
     //const { params } = await context;
     const { id } = await params;
-    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["openDB"])();
+    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["readDB"])();
     //await db.exec('CREATE TABLE IF NOT EXISTS arquitectura(id INTEGER PRIMARY KEY, name TEXT,imagen TEXT)');
     console.log(id);
     const micros = await db.all('SELECT * FROM micro WHERE arch_id=?', id);
@@ -163,7 +163,7 @@ async function GET(request, { params }) {
 }
 async function POST(request) {
     const { name, imagen, eId } = await request.json();
-    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["openDB"])();
+    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["readDB"])();
     console.log("name,imagen,eId", name, imagen, eId);
     await db.run('INSERT INTO micro (name,imagen,arch_id) VALUES (?,?,?)', [
         name,

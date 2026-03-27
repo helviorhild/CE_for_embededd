@@ -1,1 +1,18 @@
-{}
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/archs/route": "app/api/archs/route.js",
+  "/api/ejemplo/[id]/[categoria]/route": "app/api/ejemplo/[id]/[categoria]/route.js",
+  "/api/ejemplo/[id]/route": "app/api/ejemplo/[id]/route.js",
+  "/api/ejemplo/categoria/route": "app/api/ejemplo/categoria/route.js",
+  "/api/ejemplo/route": "app/api/ejemplo/route.js",
+  "/api/final/[id]/route": "app/api/final/[id]/route.js",
+  "/api/lenguaje/[id]/route": "app/api/lenguaje/[id]/route.js",
+  "/api/micro/[id]/route": "app/api/micro/[id]/route.js",
+  "/api/placa/[id]/route": "app/api/placa/[id]/route.js",
+  "/ejemplo/[id]/page": "app/ejemplo/[id]/page.js",
+  "/final/[id]/page": "app/final/[id]/page.js",
+  "/lenguaje/[id]/page": "app/lenguaje/[id]/page.js",
+  "/micro/[id]/page": "app/micro/[id]/page.js",
+  "/page": "app/page.js",
+  "/placa/[id]/page": "app/placa/[id]/page.js"
+}

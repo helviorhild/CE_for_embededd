@@ -28,7 +28,7 @@ function FormIngreso({ eId, route, titulo, categoria, onSuccess }) {
     const [categorias, setCategorias] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     // const [form, setForm] = useState({ name: "", imagen: "" ,eId:eId,( categoria!== undefined && { categoria_id: categoria })});
     async function loadCategoria() {
-        const res = await fetch(`/api/ejemplo/`);
+        const res = await fetch(`/api/ejemplo/categoria`);
         const data = await res.json();
         setCategorias(data.categorias);
         console.log("data:", data);
@@ -60,6 +60,14 @@ function FormIngreso({ eId, route, titulo, categoria, onSuccess }) {
             console.error("Error al insertar en la base de datos");
         }
     };
+    const handleChange = (e)=>{
+        const value = e.target.value;
+        setSelectedId(value);
+        setForm({
+            ...form,
+            categoria_id: value
+        });
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "p-6 m-4 border border-gray-200 rounded-lg shadow-sm bg-white max-w-2xl mx-auto",
         children: [
@@ -71,7 +79,7 @@ function FormIngreso({ eId, route, titulo, categoria, onSuccess }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/FormIngreso.jsx",
-                lineNumber: 46,
+                lineNumber: 50,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -79,7 +87,7 @@ function FormIngreso({ eId, route, titulo, categoria, onSuccess }) {
                 children: "            MODO Desarrollador"
             }, void 0, false, {
                 fileName: "[project]/components/FormIngreso.jsx",
-                lineNumber: 47,
+                lineNumber: 51,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -94,25 +102,25 @@ function FormIngreso({ eId, route, titulo, categoria, onSuccess }) {
                                 children: "Tipo ejemplo:  "
                             }, void 0, false, {
                                 fileName: "[project]/components/FormIngreso.jsx",
-                                lineNumber: 51,
+                                lineNumber: 55,
                                 columnNumber: 5
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                 className: "text-2xl font-bold mb-4 text-blue-600",
                                 id: "categoria-select",
                                 value: selectedId,
-                                onChange: (e)=>setSelectedId(e.target.value),
+                                onChange: handleChange,
                                 children: categorias.map((cat)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                         value: cat.id,
                                         children: cat.name
                                     }, cat.id, false, {
                                         fileName: "[project]/components/FormIngreso.jsx",
-                                        lineNumber: 58,
+                                        lineNumber: 62,
                                         columnNumber: 9
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/FormIngreso.jsx",
-                                lineNumber: 52,
+                                lineNumber: 56,
                                 columnNumber: 5
                             }, this),
                             selectedId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -122,13 +130,13 @@ function FormIngreso({ eId, route, titulo, categoria, onSuccess }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/FormIngreso.jsx",
-                                lineNumber: 64,
+                                lineNumber: 68,
                                 columnNumber: 20
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/FormIngreso.jsx",
-                        lineNumber: 50,
+                        lineNumber: 54,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -141,7 +149,7 @@ function FormIngreso({ eId, route, titulo, categoria, onSuccess }) {
                         className: "border p-1"
                     }, void 0, false, {
                         fileName: "[project]/components/FormIngreso.jsx",
-                        lineNumber: 67,
+                        lineNumber: 71,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -154,7 +162,7 @@ function FormIngreso({ eId, route, titulo, categoria, onSuccess }) {
                         className: "border p-1"
                     }, void 0, false, {
                         fileName: "[project]/components/FormIngreso.jsx",
-                        lineNumber: 73,
+                        lineNumber: 77,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -162,19 +170,19 @@ function FormIngreso({ eId, route, titulo, categoria, onSuccess }) {
                         children: "Agregar"
                     }, void 0, false, {
                         fileName: "[project]/components/FormIngreso.jsx",
-                        lineNumber: 79,
+                        lineNumber: 83,
                         columnNumber: 7
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/FormIngreso.jsx",
-                lineNumber: 48,
+                lineNumber: 52,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/FormIngreso.jsx",
-        lineNumber: 45,
+        lineNumber: 49,
         columnNumber: 5
     }, this);
 }
@@ -217,14 +225,25 @@ function ArchPage() {
             imagen: ""
         }
     ]);
+    const [selectedId, setSelectedId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(1);
+    var selected_cat = 1;
+    const [categorias, setCategorias] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     async function loadEjemplo() {
-        const res = await fetch(`/api/ejemplo/${id}`);
+        console.log("Selected value:", id, selected_cat);
+        const res = await fetch(`/api/ejemplo/${id}/${selected_cat}`);
         const data = await res.json();
         setEjemplo(data.ejemplo);
         console.log("data:", data);
     }
+    const loadCategorias = async ()=>{
+        const res2 = await fetch(`/api/ejemplo/categoria`);
+        const data2 = await res2.json();
+        setCategorias(data2.categorias);
+        console.log("data:", data2);
+    };
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "ArchPage.useEffect": ()=>{
+            loadCategorias();
             loadEjemplo();
         }
     }["ArchPage.useEffect"], []);
@@ -236,18 +255,18 @@ function ArchPage() {
                     eId: id,
                     route: "ejemplo",
                     titulo: "ejemplo",
-                    categoria: "nueva",
+                    categoria: "1",
                     onSuccess: loadEjemplo
                 }, void 0, false, {
                     fileName: "[project]/app/ejemplo/[id]/page.jsx",
-                    lineNumber: 25,
+                    lineNumber: 38,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     children: "No se encontró ejemplo prototipo para esta arquitectura"
                 }, void 0, false, {
                     fileName: "[project]/app/ejemplo/[id]/page.jsx",
-                    lineNumber: 26,
+                    lineNumber: 39,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -256,16 +275,22 @@ function ArchPage() {
                     children: "← Volver a la lista"
                 }, void 0, false, {
                     fileName: "[project]/app/ejemplo/[id]/page.jsx",
-                    lineNumber: 27,
+                    lineNumber: 40,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/ejemplo/[id]/page.jsx",
-            lineNumber: 24,
+            lineNumber: 37,
             columnNumber: 7
         }, this);
     }
+    const handleChange = (e)=>{
+        const value = e.target.value;
+        selected_cat = value;
+        setSelectedId(value);
+        loadEjemplo();
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "p-8 text-center",
         children: [
@@ -273,12 +298,38 @@ function ArchPage() {
                 eId: id,
                 route: "ejemplo",
                 titulo: "ejemplo",
-                categoria: "nueva",
+                categoria: "1",
                 onSuccess: loadEjemplo
             }, void 0, false, {
                 fileName: "[project]/app/ejemplo/[id]/page.jsx",
-                lineNumber: 36,
+                lineNumber: 55,
                 columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                htmlFor: "categoria-select",
+                children: "Tipo ejemplo:  "
+            }, void 0, false, {
+                fileName: "[project]/app/ejemplo/[id]/page.jsx",
+                lineNumber: 56,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                className: "text-2xl font-bold mb-4 text-blue-600",
+                id: "categoria-select",
+                value: selectedId,
+                onChange: handleChange,
+                children: categorias.map((cat)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                        value: cat.id,
+                        children: cat.name
+                    }, cat.id, false, {
+                        fileName: "[project]/app/ejemplo/[id]/page.jsx",
+                        lineNumber: 63,
+                        columnNumber: 9
+                    }, this))
+            }, void 0, false, {
+                fileName: "[project]/app/ejemplo/[id]/page.jsx",
+                lineNumber: 57,
+                columnNumber: 5
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
                 children: Array.isArray(ejemplo) ? ejemplo.map((u)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -291,7 +342,7 @@ function ArchPage() {
                                 children: u.name
                             }, void 0, false, {
                                 fileName: "[project]/app/ejemplo/[id]/page.jsx",
-                                lineNumber: 42,
+                                lineNumber: 73,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -303,25 +354,25 @@ function ArchPage() {
                                 priority: true
                             }, void 0, false, {
                                 fileName: "[project]/app/ejemplo/[id]/page.jsx",
-                                lineNumber: 45,
+                                lineNumber: 76,
                                 columnNumber: 12
                             }, this)
                         ]
                     }, u.id, true, {
                         fileName: "[project]/app/ejemplo/[id]/page.jsx",
-                        lineNumber: 40,
+                        lineNumber: 71,
                         columnNumber: 11
                     }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     className: "text-gray-500",
                     children: "No se encontró información"
                 }, void 0, false, {
                     fileName: "[project]/app/ejemplo/[id]/page.jsx",
-                    lineNumber: 55,
+                    lineNumber: 86,
                     columnNumber: 15
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/ejemplo/[id]/page.jsx",
-                lineNumber: 37,
+                lineNumber: 68,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -329,7 +380,7 @@ function ArchPage() {
                 children: ejemplo.name
             }, void 0, false, {
                 fileName: "[project]/app/ejemplo/[id]/page.jsx",
-                lineNumber: 58,
+                lineNumber: 89,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -337,7 +388,7 @@ function ArchPage() {
                 children: ejemplo.imagen
             }, void 0, false, {
                 fileName: "[project]/app/ejemplo/[id]/page.jsx",
-                lineNumber: 59,
+                lineNumber: 90,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -346,17 +397,17 @@ function ArchPage() {
                 children: "← Volver"
             }, void 0, false, {
                 fileName: "[project]/app/ejemplo/[id]/page.jsx",
-                lineNumber: 60,
+                lineNumber: 91,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/ejemplo/[id]/page.jsx",
-        lineNumber: 35,
+        lineNumber: 54,
         columnNumber: 5
     }, this);
 }
-_s(ArchPage, "t4VH9wr68H6lJMNXgD5FILTXF0E=", false, function() {
+_s(ArchPage, "PUK7RGGUWAGWFg9ixsmjJV0RNyE=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"]
     ];

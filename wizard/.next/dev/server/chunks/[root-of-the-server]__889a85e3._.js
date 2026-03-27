@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS lenguaje (
 
     create table if not exists categoria (
       id integer primary key autoincrement,
-      name text,
+      name text UNIQUE,
       descripcion text
     );
      CREATE TABLE IF NOT EXISTS ejemplo (
@@ -127,8 +127,9 @@ CREATE TABLE IF NOT EXISTS lenguaje (
     ('TODOS', 'lista de todos los ejemplos'),
     ('Caracteristicas', 'Ejemplos que muestran las características de cada arquitectura'),
     ('rendimiento', 'Ejemplos que muestran el rendimiento de cada arquitectura'),
-    ('funciones especificas', 'Ejemplos que muestran funciones específicas de cada arquitectura');
-  `);
+    ('funciones especificas', 'Ejemplos que muestran funciones específicas de cada arquitectura')
+    ON CONFLICT(name) DO NOTHING;
+    `);
     return db;
 }
 async function readDB() {
@@ -151,7 +152,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$
 ;
 async function GET(request, { params }) {
     const { id } = await params;
-    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["openDB"])();
+    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["readDB"])();
     //await db.exec('CREATE TABLE IF NOT EXISTS arquitectura(id INTEGER PRIMARY KEY, name TEXT,imagen TEXT)');
     const ejemplo = await db.all('SELECT * FROM ejemplo WHERE id=?', id);
     return Response.json({
@@ -160,7 +161,7 @@ async function GET(request, { params }) {
 }
 async function PATCH(request) {
     const { ce_config, leyenda, eId } = await request.json();
-    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["openDB"])();
+    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["readDB"])();
     console.log("ce_config,leyenda,eId", ce_config, leyenda, eId);
     if (ce_config === undefined) {
         console.log("El campo no existe");

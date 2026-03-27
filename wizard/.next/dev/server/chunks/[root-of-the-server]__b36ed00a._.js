@@ -151,22 +151,24 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/db.js [app-route] (ecmascript)");
 ;
 async function GET() {
-    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["openDB"])();
+    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["readDB"])();
     const categorias = await db.all('SELECT * FROM categoria');
     return Response.json({
         categorias
     });
 }
 async function POST(request) {
-    const { name, descripcion } = await request.json();
-    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["openDB"])();
-    console.log("name,descripcion", name, descripcion);
-    await db.run('INSERT INTO categoria (name,descripcion)VALUES (?,?,?)', [
+    const { name, imagen, eId, categoria_id } = await request.json();
+    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["readDB"])();
+    console.log("name,imagen,eId,categoria_id", name, imagen, eId, categoria_id);
+    await db.run('INSERT INTO ejemplo (name,imagen,lenguaje_id,categoria_id)VALUES (?,?,?,?)', [
         name,
-        descripcion
+        imagen,
+        eId,
+        categoria_id
     ]);
     return Response.json({
-        message: 'categoria agregada'
+        message: 'ejemplo agregado'
     });
 }
 }),

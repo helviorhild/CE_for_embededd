@@ -107,6 +107,11 @@ CREATE TABLE IF NOT EXISTS lenguaje (
       FOREIGN KEY (placa_id) REFERENCES placa(id)
     );
 
+    create table if not exists categoria (
+      id integer primary key autoincrement,
+      name text UNIQUE,
+      descripcion text
+    );
      CREATE TABLE IF NOT EXISTS ejemplo (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT,
@@ -114,9 +119,17 @@ CREATE TABLE IF NOT EXISTS lenguaje (
       ce_config TEXT,
       leyenda TEXT,
       lenguaje_id INTEGER,
+      categoria_id INTEGER,
+      FOREIGN KEY (categoria_id) REFERENCES categoria(id),
       FOREIGN KEY (lenguaje_id) REFERENCES lenguaje(id)
-    )
-  `);
+    );
+    Insert into categoria (name, descripcion) values 
+    ('TODOS', 'lista de todos los ejemplos'),
+    ('Caracteristicas', 'Ejemplos que muestran las características de cada arquitectura'),
+    ('rendimiento', 'Ejemplos que muestran el rendimiento de cada arquitectura'),
+    ('funciones especificas', 'Ejemplos que muestran funciones específicas de cada arquitectura')
+    ON CONFLICT(name) DO NOTHING;
+    `);
     return db;
 }
 async function readDB() {
@@ -138,7 +151,7 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/db.js [app-route] (ecmascript)");
 ;
 async function GET(request, { params }) {
-    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["openDB"])();
+    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["readDB"])();
     //await db.exec('CREATE TABLE IF NOT EXISTS arquitectura(id INTEGER PRIMARY KEY, name TEXT,imagen TEXT)');
     const ejemplo = await db.all('SELECT * FROM ejemplo ');
     return Response.json({
@@ -147,7 +160,7 @@ async function GET(request, { params }) {
 }
 async function PATCH(request) {
     const { ce_config, leyenda, eId } = await request.json();
-    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["openDB"])();
+    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["readDB"])();
     console.log("name,imagen,arch_id", ce_config, leyenda, eId);
     if (ce_config === "") {
         await db.run('UPDATE ejemplo  SET leyenda=? WHERE id=?', [

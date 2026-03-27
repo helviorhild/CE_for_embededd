@@ -152,7 +152,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$
 ;
 async function GET(request, { params }) {
     const { id } = await params;
-    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["openDB"])();
+    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["readDB"])();
     const ejemplo = await db.all('SELECT * FROM ejemplo WHERE lenguaje_id=? ', id);
     return Response.json({
         ejemplo
@@ -160,7 +160,7 @@ async function GET(request, { params }) {
 }
 async function POST(request) {
     const { name, imagen, eId } = await request.json();
-    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["openDB"])();
+    const db = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["readDB"])();
     console.log("name,imagen,lenguaje_id(eId)", name, imagen, eId);
     await db.run('INSERT INTO ejemplo (name,imagen,lenguaje_id) VALUES (?,?,?)', [
         name,

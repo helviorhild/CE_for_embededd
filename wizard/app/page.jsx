@@ -67,8 +67,7 @@ export default function Page() {
           width={100}
           height={20}
           priority
-        />
-        
+        />        
           </li>
         ))):( <p className="text-gray-500">No se encontró información</p>)}
       </ul>  

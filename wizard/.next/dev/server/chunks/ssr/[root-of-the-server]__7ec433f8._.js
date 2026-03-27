@@ -148,7 +148,7 @@ function Page() {
                     children: "No se encontró información"
                 }, void 0, false, {
                     fileName: "[project]/app/page.jsx",
-                    lineNumber: 73,
+                    lineNumber: 72,
                     columnNumber: 15
                 }, this)
             }, void 0, false, {

@@ -12,7 +12,7 @@ export default function FormIngreso({ eId,route,titulo,categoria,onSuccess }) {
 const [categorias, setCategorias] = useState([]);
  // const [form, setForm] = useState({ name: "", imagen: "" ,eId:eId,( categoria!== undefined && { categoria_id: categoria })});
 async function loadCategoria() {
-    const res = await fetch(`/api/ejemplo/`);
+    const res = await fetch(`/api/ejemplo/categoria`);
     const data = await res.json();
     setCategorias(data.categorias);
     console.log("data:",data);
@@ -23,8 +23,7 @@ async function loadCategoria() {
     }, []);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-      
+    e.preventDefault();      
     console.log("form:",form);
     // Enviar los datos a la API
     const res = await fetch(`/api/${route}`, {
@@ -41,6 +40,11 @@ async function loadCategoria() {
     }
   };
 
+const handleChange = (e) => {
+  const value = e.target.value;
+  setSelectedId(value);      
+  setForm({ ...form, categoria_id:value })       
+};
   return (
     <div className="p-6 m-4 border border-gray-200 rounded-lg shadow-sm bg-white max-w-2xl mx-auto">
       <h1 className="text-2xl font-bold mb-4">Agregar {titulo}</h1>
@@ -52,7 +56,7 @@ async function loadCategoria() {
     <select className="text-2xl font-bold mb-4 text-blue-600"
       id="categoria-select"
       value={selectedId} 
-      onChange={(e) => setSelectedId(e.target.value)}
+      onChange={handleChange}
     >
      {categorias.map((cat) => (
         <option  key={cat.id} value={cat.id}>

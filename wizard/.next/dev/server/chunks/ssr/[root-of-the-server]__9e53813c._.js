@@ -62,8 +62,16 @@ function FormIngreso({ eId, route, titulo, categoria, onSuccess }) {
             console.error("Error al insertar en la base de datos");
         }
     };
-    console.log("categorias:", categoria);
+    const handleChange = (e)=>{
+        const value = e.target.value;
+        setSelectedId(value);
+        setForm({
+            ...form,
+            categoria_id: value
+        });
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "p-6 m-4 border border-gray-200 rounded-lg shadow-sm bg-white max-w-2xl mx-auto",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                 className: "text-2xl font-bold mb-4",
@@ -73,75 +81,64 @@ function FormIngreso({ eId, route, titulo, categoria, onSuccess }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/FormIngreso.jsx",
-                lineNumber: 46,
-                columnNumber: 2
+                lineNumber: 50,
+                columnNumber: 7
             }, this),
-            categoria && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                children: [
-                    "Categoría: ",
-                    categoria
-                ]
-            }, void 0, true, {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                className: "text-left text-gray-500 mb-4  -rotate-45 text-3xl  whitespace-pre",
+                children: "            MODO Desarrollador"
+            }, void 0, false, {
                 fileName: "[project]/components/FormIngreso.jsx",
-                lineNumber: 47,
-                columnNumber: 21
+                lineNumber: 51,
+                columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
                 onSubmit: handleSubmit,
                 className: "my-4 space-x-2 text-center",
                 children: [
                     categoria !== undefined && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "form-group",
+                        className: "form-group text-center text-amber-800",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                 htmlFor: "categoria-select",
-                                children: "Selecciona una categoría:"
+                                children: "Tipo ejemplo:  "
                             }, void 0, false, {
                                 fileName: "[project]/components/FormIngreso.jsx",
-                                lineNumber: 51,
+                                lineNumber: 55,
                                 columnNumber: 5
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                className: "text-2xl font-bold mb-4 text-blue-600",
                                 id: "categoria-select",
                                 value: selectedId,
-                                onChange: (e)=>setSelectedId(e.target.value),
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                        value: "",
-                                        children: "-- Elige una opción --"
-                                    }, void 0, false, {
+                                onChange: handleChange,
+                                children: categorias.map((cat)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                        value: cat.id,
+                                        children: cat.name
+                                    }, cat.id, false, {
                                         fileName: "[project]/components/FormIngreso.jsx",
-                                        lineNumber: 57,
-                                        columnNumber: 7
-                                    }, this),
-                                    categorias.map((cat)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                            value: cat.id,
-                                            children: cat.name
-                                        }, cat.id, false, {
-                                            fileName: "[project]/components/FormIngreso.jsx",
-                                            lineNumber: 61,
-                                            columnNumber: 9
-                                        }, this))
-                                ]
-                            }, void 0, true, {
+                                        lineNumber: 62,
+                                        columnNumber: 9
+                                    }, this))
+                            }, void 0, false, {
                                 fileName: "[project]/components/FormIngreso.jsx",
-                                lineNumber: 52,
+                                lineNumber: 56,
                                 columnNumber: 5
                             }, this),
                             selectedId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 children: [
-                                    "ID seleccionado: ",
-                                    selectedId
+                                    " ",
+                                    categorias[selectedId - 1]?.descripcion
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/FormIngreso.jsx",
-                                lineNumber: 67,
+                                lineNumber: 68,
                                 columnNumber: 20
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/FormIngreso.jsx",
-                        lineNumber: 50,
+                        lineNumber: 54,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -154,7 +151,7 @@ function FormIngreso({ eId, route, titulo, categoria, onSuccess }) {
                         className: "border p-1"
                     }, void 0, false, {
                         fileName: "[project]/components/FormIngreso.jsx",
-                        lineNumber: 70,
+                        lineNumber: 71,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -167,7 +164,7 @@ function FormIngreso({ eId, route, titulo, categoria, onSuccess }) {
                         className: "border p-1"
                     }, void 0, false, {
                         fileName: "[project]/components/FormIngreso.jsx",
-                        lineNumber: 76,
+                        lineNumber: 77,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -175,19 +172,19 @@ function FormIngreso({ eId, route, titulo, categoria, onSuccess }) {
                         children: "Agregar"
                     }, void 0, false, {
                         fileName: "[project]/components/FormIngreso.jsx",
-                        lineNumber: 82,
+                        lineNumber: 83,
                         columnNumber: 7
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/FormIngreso.jsx",
-                lineNumber: 48,
-                columnNumber: 5
+                lineNumber: 52,
+                columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/FormIngreso.jsx",
-        lineNumber: 45,
+        lineNumber: 49,
         columnNumber: 5
     }, this);
 }
