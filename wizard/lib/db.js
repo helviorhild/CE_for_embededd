@@ -9,7 +9,7 @@ sqlite3.verbose();
 // Abrir conexión a una base de datos local (en /project/data.db)
 export async function openDB() {
   const db = await open({
-    filename: path.join(process.cwd(), 'data.db'),
+    filename: path.join(process.cwd(), '/files/data.db'),
     driver: sqlite3.Database,
   });
 
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS lenguaje (
 }
 export async function readDB() {
   return open({
-    filename: './data.db', // ruta a tu base
+    filename: '/files/data.db', // ruta a tu base
     driver: sqlite3.Database,
   });
 }

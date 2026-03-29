@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 58, "column": 0}, "map": {"version":3,"sources":["file:///opt/wizard/app/api/descargas/route.js"],"sourcesContent":["import { NextResponse } from 'next/server';\nimport fs from 'fs';\nimport path from 'path';\n\nexport async function GET() {\n  const filePath = path.join(process.cwd(), 'files', 'data.db');\n  const fileBuffer = fs.readFileSync(filePath);\n\n  return new NextResponse(fileBuffer, {\n    headers: {\n      'Content-Type': 'application/vnd.sqlite3',\n      'Content-Disposition': 'attachment; filename=\"data.db\"',\n    },\n  });\n}"],"names":[],"mappings":";;;;AAAA;AACA;AACA;;;;AAEO,eAAe;IACpB,MAAM,WAAW,4GAAI,CAAC,IAAI,CAAC,QAAQ,GAAG,IAAI,SAAS;IACnD,MAAM,aAAa,wGAAE,CAAC,YAAY,CAAC;IAEnC,OAAO,IAAI,gJAAY,CAAC,YAAY;QAClC,SAAS;YACP,gBAAgB;YAChB,uBAAuB;QACzB;IACF;AACF","debugId":null}}]
+}
