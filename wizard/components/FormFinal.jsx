@@ -34,7 +34,7 @@ export default function FormFinal({ eId,onSuccess }) {
         className="border p-1"
         />
          <input
-        placeholder="Texto Descriptivo"
+        placeholder="pdf Descriptivo"
         value={form.leyenda}
         onChange={(e) => setForm({ ...form, leyenda: e.target.value })}
         className="border p-1"

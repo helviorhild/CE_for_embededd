@@ -48,4 +48,6 @@ EOF
 systemctl daemon-reload
 systemctl enable --now launch-wizard.service
 systemctl enable --now compiler-explorer.service
+echo "vhci-hcd">/etc/modules-load.d/usbip.conf
+modprobe vhci-hcd
 modprobe ch341
