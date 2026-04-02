@@ -14,6 +14,6 @@ export async function POST(request) {
   const { name,imagen,placa_id } = await request.json();
   const db = await readDB();
   console.log("name,imagen,arch_id",name,imagen,placa_id);
-  await db.run('INSERT INTO lenguaje (name,imagen,placa_id) VALUES (?,?,?)', [name,imagen,placa_id]);
+  await db.prepare('INSERT INTO lenguaje (name,imagen,placa_id) VALUES (?,?,?)').run([name,imagen,placa_id]);
   return Response.json({ message: 'lenguaje agregado' });
 }

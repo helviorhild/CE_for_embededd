@@ -13,6 +13,6 @@ export async function POST(request) {
   const { name,imagen,eId } = await request.json();
   const db = await readDB();
   console.log("name,imagen,arch_id",name,imagen,eId);
-  await db.run('INSERT INTO placa (name,imagen,micro_id) VALUES (?,?,?)', [name,imagen,eId]);
+  await db.prepare('INSERT INTO placa (name,imagen,micro_id) VALUES (?,?,?)').run([name,imagen,eId]);
   return Response.json({ message: 'placa agregada' });
 }

@@ -4,6 +4,14 @@ import Image from "next/image";
 import FormFinal from "../../../components/FormFinal";
 import { useEffect, useState } from 'react';
 import { useParams } from "next/navigation";
+
+import dynamic from "next/dynamic";
+
+const PdfViewer = dynamic(() => import("@/components/pdfviewer.js"), {
+  ssr: false,
+});
+
+//import PdfViewer from "@/components/pdfviewer";
 export default function FinalPage() {
   const { id } = useParams();
   const [ejemplo, setEjemplo] = useState([{ id: 0, name: "Cargando datos...", imagen: "",ce_config:"",leyenda:"", ejemplo_id: 0 }]);
@@ -52,11 +60,8 @@ export default function FinalPage() {
                 width={500}
                 height={100}
                 priority
-              />
-                <div className="text-black-500 text-xl font-normal">
-                  <p dangerouslySetInnerHTML={{ __html: u.leyenda }} />                  
-                </div>
-
+              />              
+          <PdfViewer file={`/docs/${u.leyenda}`} />
 
             </li>
           ))) : (<p className="text-gray-500">No se encontró información</p>)}

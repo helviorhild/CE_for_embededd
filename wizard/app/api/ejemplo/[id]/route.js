@@ -13,6 +13,6 @@ export async function POST(request) {
   const { name,imagen,eId } = await request.json();
   const db = await readDB();
   console.log("name,imagen,lenguaje_id(eId)",name,imagen,eId);
-  await db.run('INSERT INTO ejemplo (name,imagen,lenguaje_id) VALUES (?,?,?)', [name,imagen,eId]);
+  await db.prepare('INSERT INTO ejemplo (name,imagen,lenguaje_id) VALUES (?,?,?)').run([name,imagen,eId]);
   return Response.json({ message: 'ejemplo agregado' });
 }

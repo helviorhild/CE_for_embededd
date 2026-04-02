@@ -14,12 +14,12 @@ export async function PATCH(request) {
   const db = await readDB();
   console.log("name,imagen,arch_id",ce_config,leyenda,eId);
     if (ce_config === "") {
-   await db.run('UPDATE ejemplo  SET leyenda=? WHERE id=?', [leyenda,eId]);
+   await db.prepare('UPDATE ejemplo  SET leyenda=? WHERE id=?').run([leyenda,eId]);
 } else  if (leyenda === "") { 
-   await db.run('UPDATE ejemplo  SET ce_config=? WHERE id=?', [ce_config,eId]);
+   await db.prepare('UPDATE ejemplo  SET ce_config=? WHERE id=?').run([ce_config,eId]);
 }
 else {
-  await db.run('UPDATE ejemplo  SET ce_config=?,leyenda=? WHERE id=?', [ce_config,leyenda,eId]);
+  await db.prepare('UPDATE ejemplo  SET ce_config=?,leyenda=? WHERE id=?').run([ce_config,leyenda,eId]);
 }
   return Response.json({ message: 'datos cambiados' });
 }

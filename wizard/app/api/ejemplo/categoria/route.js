@@ -11,6 +11,6 @@ export async function POST(request) {
   const {name,imagen,eId,categoria_id} = await request.json();
   const db = await readDB();
   console.log("name,imagen,eId,categoria_id",name,imagen,eId,categoria_id);
-  await db.run('INSERT INTO ejemplo (name,imagen,lenguaje_id,categoria_id)VALUES (?,?,?,?)', [name,imagen,eId,categoria_id]);
+  await db.prepare('INSERT INTO ejemplo (name,imagen,lenguaje_id,categoria_id)VALUES (?,?,?,?)').run([name,imagen,eId,categoria_id]);
   return Response.json({ message: 'ejemplo agregado' });
 }

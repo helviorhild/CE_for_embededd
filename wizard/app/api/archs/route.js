@@ -13,6 +13,6 @@ export async function POST(request) {
   const { name,imagen } = await request.json();
   const db = await openDB();
   //console.log("name,imagen",name,imagen);
-  await db.run('INSERT INTO arquitectura (name,imagen) VALUES (?,?)', [name,imagen]);
+  await db.prepare('INSERT INTO arquitectura (name,imagen) VALUES (?,?)').run([name,imagen]);
   return Response.json({ message: 'arquitectura agregada' });
 }
