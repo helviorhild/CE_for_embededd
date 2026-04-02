@@ -1,0 +1,19 @@
+# dependencias
+wizard/node_modules/
+
+# build Next.js
+wizard/.next/
+
+# opcional pero recomendado
+wizard/dist/
+wizard/out/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# entorno
+wizard/.env
+wizard/.env.local
+wizard/.env.productionnode_modules/
